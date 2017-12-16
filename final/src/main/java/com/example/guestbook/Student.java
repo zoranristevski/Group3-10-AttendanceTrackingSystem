@@ -45,6 +45,7 @@ import com.google.appengine.api.users.UserServiceFactory;
  **/
 @Entity
 public class Student {
+  @Parent Key<Group> theGroup;
   @Id public Long id;
 
   public String name;
@@ -56,22 +57,26 @@ public class Student {
    * Simple constructor 
    **/
   public Student() {
+	 
 	    UserService userService = UserServiceFactory.getUserService();
 	    this.user = userService.getCurrentUser();
 
   }
 
-  public Student(String name, String familyName) { 
-	  this();
-	  this.name = name;
-	  this.familyName = familyName;
+  public Student(String name, String familyName, String group) {
+    this();
+    if( group != null ) {
+      theGroup = Key.create(Group.class, group);  // Creating the Ancestor key
+    } else {
+      theGroup = Key.create(Group.class, "default");
+    }
+    this.name = name;
+    this.familyName = familyName;
   }
   
-  public Student(String name, String familyName, User user) {
-	  this();
-	  this.name = name;
-	  this.familyName = familyName;
-	  this.user = user;
-  }
- 
+    
+  public Student(String group, String name, String familyName, User assignedUser) {
+	  this(group, name, familyName);
+	  user = assignedUser;
+  } 
 }
