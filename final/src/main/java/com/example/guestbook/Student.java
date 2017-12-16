@@ -61,18 +61,16 @@ public class Student {
 
   }
 
-  public Student(String name, String familyName, Group group) { 
+  public Student(String name, String familyName) { 
 	  this();
 	  this.name = name;
 	  this.familyName = familyName;
-	  this.group = group;
   }
   
-  public Student(String name, String familyName, Group group, User user) {
+  public Student(String name, String familyName, User user) {
 	  this();
 	  this.name = name;
 	  this.familyName = familyName;
-	  this.group = group;
 	  this.user = user;
   }
  

@@ -35,5 +35,8 @@ public class Group {
 	  this.name = name;
   }
 
-
+  public void registerStudent(Student student) {
+	  student.group = this;
+  }
+  
 }
