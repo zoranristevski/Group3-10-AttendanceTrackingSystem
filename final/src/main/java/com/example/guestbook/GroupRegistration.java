@@ -34,13 +34,12 @@ import java.util.List;
 /**
  * The Entity will hold the registration of students for groups
  *
- * NOTE - all the properties are PUBLIC so that we can keep the code simple.
  **/
 @Entity
 public class GroupRegistration {
   @Id public Long id;
-  User user;
-  Group group;
+  @Index public User user;
+  public Group group;
   
   public GroupRegistration() {
 	  

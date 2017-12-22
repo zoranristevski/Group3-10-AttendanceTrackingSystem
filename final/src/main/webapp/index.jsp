@@ -49,8 +49,45 @@
           .type(GroupRegistration.class)
           .list();
 
- //   if (registrations.isEmpty()) {
+     if (registrations.isEmpty()) {
+      //Creating few groups to be able to present them.
+
+      Group a = new Group();
+      Group b = new Group();
+
+     // here we should get all available groups
+      List<Group> groups = ObjectifyService.ofy()
+          .load()
+          .type(Group.class)
+          .list();
+
+
 %>
+
+            <p>Please choose one of the groups below to register:</p>
+                    <%
+                     String groupName;
+                 for (Group group : groups) {
+                         groupName = group.name;
+                         System.out.println(groupName);
+                         pageContext.setAttribute("next_group", groupName);
+                 %>
+
+                         <p>${fn:escapeXml(next_group)}</p>
+                    <%
+                 }
+    } else {
+                        Group group = registrations.get(0).group;
+
+                        pageContext.setAttribute("registeredGroup", group.name);
+
+
+%>
+            <p>Registered for a group already.</p>
+                    <%
+    }
+%>
+
 
 
         </body>
