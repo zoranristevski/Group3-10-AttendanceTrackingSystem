@@ -36,23 +36,15 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 
 
-public class RegisterToGroupServlet extends HttpServlet {
+public class CreateGroupServlet extends HttpServlet {
 
   // Process the http POST of the form
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-    UserService userService = UserServiceFactory.getUserService();
-    User user = userService.getCurrentUser();  // Find out who the user is.
-
-
     String selectedGroup = req.getParameter("groupName");
-    Group group = ObjectifyService.ofy().load().type(Group.class).id(selectedGroup).now();
-
-    GroupRegistration newGroupRegistration = new GroupRegistration(user, group);
-
-    ObjectifyService.ofy().save().entity(newGroupRegistration).now();
-
-    resp.sendRedirect("/index.jsp");
+    Group group = new Group(selectedGroup);
+    ObjectifyService.ofy().save().entity(group).now();
+    resp.sendRedirect("/availableGroups.jsp");
   }
 }
 //[END all]

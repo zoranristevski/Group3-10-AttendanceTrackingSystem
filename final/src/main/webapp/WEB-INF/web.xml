@@ -14,6 +14,29 @@
       <url-pattern>/sign</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+      <servlet-name>createGroup</servlet-name>
+      <servlet-class>com.example.guestbook.CreateGroupServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+      <servlet-name>createGroup</servlet-name>
+      <url-pattern>/createGroup</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+      <servlet-name>regToGroup</servlet-name>
+      <servlet-class>com.example.guestbook.RegisterToGroupServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+      <servlet-name>regToGroup</servlet-name>
+      <url-pattern>/registerToGroup</url-pattern>
+    </servlet-mapping>
+
+
+
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

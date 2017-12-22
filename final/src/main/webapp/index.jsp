@@ -52,9 +52,6 @@
      if (registrations.isEmpty()) {
       //Creating few groups to be able to present them.
 
-      Group a = new Group();
-      Group b = new Group();
-
      // here we should get all available groups
       List<Group> groups = ObjectifyService.ofy()
           .load()
@@ -63,6 +60,7 @@
 
 
 %>
+
 
             <p>Please choose one of the groups below to register:</p>
                     <%
@@ -83,10 +81,23 @@
 
 
 %>
-            <p>Registered for a group already.</p>
+            <p>Registered for a group already. ${fn:escapeXml(registeredGroup)}</p>
                     <%
     }
 %>
+        <a href="availableGroups.jsp">Available Groups</a>
+
+        <p>Create a group</p>
+        <form action="/createGroup" method="post">
+         <div><textarea name="groupName" rows="1" cols="25"></textarea></div>
+         <div><input type="submit" value="Create Group"/></div>
+        </form>
+
+        <p>Type an existing group to register to:</p>
+        <form action="/registerToGroup" method="post">
+        <div><textarea name="groupName" rows="1" cols="25"></textarea></div>
+        <div><input type="submit" value="Register for Group"/></div>
+        </form>
 
 
 

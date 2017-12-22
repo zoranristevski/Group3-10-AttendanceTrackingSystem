@@ -94,7 +94,7 @@
     <div><textarea name="content" rows="3" cols="60"></textarea></div>
     <div><input type="submit" value="Post Greeting"/></div>
     <input type="hidden" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/>
-</form>
+    </form>
 <%-- //[END datastore]--%>
 <form action="/guestbook.jsp" method="get">
     <div><input type="text" name="guestbookName" value="${fn:escapeXml(guestbookName)}"/></div>
