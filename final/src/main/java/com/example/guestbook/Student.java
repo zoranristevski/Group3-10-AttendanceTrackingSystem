@@ -63,10 +63,10 @@ public class Student {
 
   }
 
-  public Student(String name, String familyName, String group) {
+  public Student(String name, String familyName, String groupName) {
     this();
     if( group != null ) {
-      theGroup = Key.create(Group.class, group);  // Creating the Ancestor key
+      theGroup = Key.create(Group.class, groupName);  // Creating the Ancestor key
     } else {
       theGroup = Key.create(Group.class, "default");
     }
@@ -75,8 +75,8 @@ public class Student {
   }
   
     
-  public Student(String group, String name, String familyName, User assignedUser) {
-	  this(group, name, familyName);
+  public Student( String name, String familyName, String groupName, User assignedUser) {
+	  this(name, familyName, groupName);
 	  user = assignedUser;
   } 
 }
