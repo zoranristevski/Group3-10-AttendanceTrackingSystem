@@ -81,7 +81,7 @@
 
 
 %>
-            <p>Registered for a group already. ${fn:escapeXml(registeredGroup)}</p>
+            <p>You are already registered in group ${fn:escapeXml(registeredGroup)}.</p>
                     <%
     }
 %>
