@@ -5,7 +5,8 @@
         <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 
         <%-- //[START imports]--%>
-        <%@ page import="com.example.guestbook.Greeting" %>
+        <%@ page import="com.example.guestbook.GroupRegistration" %>
+        <%@ page import="com.example.guestbook.Group" %>
         <%@ page import="com.example.guestbook.Guestbook" %>
         <%@ page import="com.googlecode.objectify.Key" %>
         <%@ page import="com.googlecode.objectify.ObjectifyService" %>
@@ -34,10 +35,22 @@
         <p>Hello!
         <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
         to access the Attendance Tracking System.</p>
-            <%
+      <%
     }
 %>
 
+<%-- //[Show currently registered group or the groups to register to]--%>
+<%
+ 
+    // Run a query to check of a registration of the current user in a group
+    
+      List<GroupRegistration> registrations = ObjectifyService.ofy()
+          .load()
+          .type(GroupRegistration.class)
+          .list();
+
+ //   if (registrations.isEmpty()) {
+%>
 
 
         </body>

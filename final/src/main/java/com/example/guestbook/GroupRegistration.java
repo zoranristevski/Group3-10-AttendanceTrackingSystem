@@ -22,6 +22,10 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Parent;
+import com.google.appengine.api.users.User;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 
 import java.lang.String;
 import java.util.Date;
@@ -35,14 +39,14 @@ import java.util.List;
 @Entity
 public class GroupRegistration {
   @Id public Long id;
-  Student student;
+  User user;
   Group group;
   
   public GroupRegistration() {
 	  
   }
-  public GroupRegistration(Student student, Group group) {
-	  this.student = student;
+  public GroupRegistration(User user, Group group) {
+	  this.user = user;
 	  this.group = group;
  
   }
